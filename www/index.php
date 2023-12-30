@@ -12,7 +12,34 @@
 </head>
 
 <body>
+    <header>
 
+    </header>
+    <main>
+        <!-- About -->
+        <section>
+
+        </section>
+        <!-- /About -->
+        <!-- Skills -->
+        <section>
+
+        </section>
+        <!-- /Skills -->
+        <!-- Projects -->
+        <section>
+
+        </section>
+        <!-- /Projects -->
+        <!-- Contact -->
+        <section>
+            
+        </section>
+        <!-- /Contacts -->
+    </main>
+    <footer>
+
+    </footer>
     <script src="./assets/js/vendor/popper.min.js"></script>
     <script src="./assets/js/vendor/bootstrap.min.js"></script>
 </body>
