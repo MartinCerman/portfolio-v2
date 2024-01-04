@@ -55,7 +55,15 @@
     <main>
         <!-- About -->
         <section>
-
+            <div class="w-sm-75 pe-5">
+                <p class="text-secondary mb-0">Hello, I'm</p>
+                <h2 class="h1 fw-light mb-0">Martin Čerman</h2>
+                <p class="lead text-info">Junior Back-End Developer</p>
+                <p class="pe-5 lead">I am a junior programmer and I am currently studying a course focused on web applications and object-oriented programming at the Technical University of Ostrava.</p>
+            </div>
+            <svg class="bi text-info border border-1 border-info rounded-5" width="60" height="30" fill="currentColor">
+                <use xlink:href="./assets/images/icons/bootstrap-icons.svg#chevron-double-down" />
+            </svg>
         </section>
         <!-- /About -->
         <!-- Skills -->
