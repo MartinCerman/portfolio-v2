@@ -1,3 +1,31 @@
+<?php 
+
+$locale = locale_accept_from_http($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+
+if(!isset($_COOKIE["lang"])){
+    if($locale === "cs"){
+        setcookie("lang", "cs", time() + 86400 * 30, "/");
+        $textArray = require "./src/locale/cs.php";
+        $csBtnClass = "text-info";
+        $enBtnClass = "text-secondary small";
+    } else {
+        setcookie("lang", "en", time() + 86400 * 30, "/");
+        $textArray = require "./src/locale/en.php";
+        $enBtnClass = "text-info";
+        $csBtnClass = "text-secondary small";
+    }
+} elseif($_COOKIE["lang"] === "cs"){
+        $textArray = require "./src/locale/cs.php";
+        $csBtnClass = "text-info";
+        $enBtnClass = "text-secondary small";
+} else {
+        $textArray = require "./src/locale/en.php";
+        $enBtnClass = "text-info";
+        $csBtnClass = "text-secondary small";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="cs" data-bs-theme="dark">
 
@@ -23,16 +51,16 @@
             <div class="collapse navbar-collapse" id="headerNav">
                 <ul class="navbar-nav w-sm-75 ms-sm-auto ms-sm-5 d-flex justify-content-around text-center">
                     <li class="nav-item ms-lg-5">
-                        <a class="nav-link" aria-current="page" href="#about">About</a>
+                        <a class="nav-link" aria-current="page" href="#about"><?= $textArray["header-about"] ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
+                        <a class="nav-link" href="#skills"><?= $textArray["header-skills"] ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
+                        <a class="nav-link" href="#projects"><?= $textArray["header-projects"] ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link" href="#contact"><?= $textArray["header-contact"] ?></a>
                     </li>
                 </ul>
             </div>
@@ -46,7 +74,7 @@
                     </svg>
                 </div>
                 <div id="language-toggler">
-                    <span class="text-info">EN</span> / <span class="text-secondary small">CZ</span>
+                    <span class="<?= $enBtnClass ?>">EN</span> / <span class="<?= $csBtnClass ?>">CZ</span>
                 </div>
             </div>
 
@@ -56,10 +84,10 @@
         <!-- About -->
         <section id="about" class="my-5">
             <div class="w-sm-75 pe-5">
-                <p class="text-secondary mb-0">Hello, I'm</p>
+                <p class="text-secondary mb-0"><?= $textArray["about-hello"] ?></p>
                 <h2 class="h1 fw-light mb-0">Martin Čerman</h2>
-                <p class="lead text-info">Junior Back-End Developer</p>
-                <p class="pe-5 lead">I am a junior programmer and I am currently studying a course focused on web applications and object-oriented programming at the Technical University of Ostrava.</p>
+                <p class="lead text-info"><?= $textArray["about-title"] ?></p>
+                <p class="pe-5 lead"><?= $textArray["about-p1"] ?></p>
             </div>
             <div class="accordion" id="aboutMeAccordion">
                 <div class="w-100 text-center">
@@ -70,7 +98,7 @@
                 <div id="itemOne" class="collapse">
                     <div class="d-flex flex-column flex-md-row align-items-center">
                         <img class="w-50 ms-1" style="max-width: 326px;" src="./assets/images/Robot-flying.png" alt="Robot">
-                        <p class="w-sm-75 lead">Je mi něco přes 30 let a jsem z Vysočiny. Vždy mě zajímalo jak se tvoří hry a k programování jsem se dostal právě od pokusů v herním enginu Unreal Engine 5, který je postavený na C++. Nakonec právě programování v C++ mě velmi rychle začlo bavíc více než vývoj her samotných a po pár měsících samostudia jsem získal možnost zúčastnit se kurzu <a class="link-primary" target="_blank" href="http://kurzy.vsb.cz/rekval-kurzy/programovani-obsah.php">OOP a programování www aplikací</a> a databází pořádaným VŠB - Technická univerzita Ostrava, kterým právě procházím.</p>
+                        <p class="w-sm-75 lead"><?= $textArray["about-p2"] ?></p>
                     </div>
                 </div>
             </div>
@@ -78,21 +106,21 @@
         <!-- /About -->
         <!-- Skills -->
         <section id="skills">
-        <h2 class="display-4 text-center">Skills</h2>
-        <h3 class="h1 fw-light mb-0">Primary</h3>
-        <p class="text-secondary lh-1">- Technologies I use the most and study further.</p>
+        <h2 class="display-4 text-center"><?= $textArray["skills-heading"] ?></h2>
+        <h3 class="h1 fw-light mb-0"><?= $textArray["skills-primary"] ?></h3>
+        <p class="text-secondary lh-1"><?= $textArray["skills-primary-text"] ?></p>
         <p><span class="px-1 me-1 text-bg-info opacity-75">C#</span> <span class="px-1 me-1 text-bg-info opacity-75">.NET</span> <span class="px-1 me-1 text-bg-info opacity-75">ASP.NET Core</span> <span class="px-1 me-1 text-bg-info opacity-75">SQL</span> <span class="px-1 me-1 text-bg-info opacity-75">Visual Studio 2022</span> <span class="px-1 me-1 text-bg-info opacity-75">Git</span> <span class="px-1 me-1 text-bg-info opacity-75">GitHub</span></p>
-        <h3 class="h1 fw-light mb-0">Secondary</h3>
-        <p class="text-secondary lh-1">- Technologies I possess basic knowledge in and use occasionally.</p>
+        <h3 class="h1 fw-light mb-0"><?= $textArray["skills-secondary"] ?></h3>
+        <p class="text-secondary lh-1"><?= $textArray["skills-secondary-text"] ?></p>
         <p><span class="px-1 me-1 text-bg-info opacity-75">PHP</span> <span class="px-1 me-1 text-bg-info opacity-75">JavaScript</span> <span class="px-1 me-1 text-bg-info opacity-75">HTML</span> <span class="px-1 me-1 text-bg-info opacity-75">CSS</span> <span class="px-1 me-1 text-bg-info opacity-75">SASS</span> <span class="px-1 me-1 text-bg-info opacity-75">Bootstrap</span> <span class="px-1 me-1 text-bg-info opacity-75">C++</span> <span class="px-1 me-1 text-bg-info opacity-75">VS Code</span> <span class="px-1 me-1 text-bg-info opacity-75">MySQL</span> <span class="px-1 me-1 text-bg-info opacity-75">MS SQL Server</span> <span class="px-1 me-1 text-bg-info opacity-75">VMware Workstation</span></p>
-        <h3 class="h1 fw-light mb-0">Other</h3>
-        <p class="text-secondary lh-1">- At least I know what you're talking about, if that counts.</p>
+        <h3 class="h1 fw-light mb-0"><?= $textArray["skills-other"] ?></h3>
+        <p class="text-secondary lh-1"><?= $textArray["skills-other-text"] ?></p>
         <p><span class="px-1 me-1 text-bg-info opacity-75">Visual Basic</span> <span class="px-1 me-1 text-bg-info opacity-75">Java</span> <span class="px-1 me-1 text-bg-info opacity-75">React</span> <span class="px-1 me-1 text-bg-info opacity-75">Linux</span> <span class="px-1 me-1 text-bg-info opacity-75">Docker</span> <span class="px-1 me-1 text-bg-info opacity-75">ITIL</span></p>
         </section>
         <!-- /Skills -->
         <!-- Projects -->
         <section id="projects" class="container">
-            <h2 class="display-4 text-center">Projects</h2>
+            <h2 class="display-4 text-center"><?= $textArray["projects-heading"] ?></h2>
             <div id="projectCards" class="d-flex flex-wrap justify-content-sm-start justify-content-center">
                 <!-- Content generated by index.js -->
             </div>
@@ -100,21 +128,21 @@
         <!-- /Projects -->
         <!-- Contact -->
         <section id="contact" class="container mt-3">
-            <h2 class="display-4 text-center">Contact Me</h2>
+            <h2 class="display-4 text-center"><?= $textArray["contact-heading"] ?></h2>
             <form action="" class="col-md-8 col-10 px-lg-5 p-2 mx-auto">
                 <div class="form-floating mb-2">
                     <input class="form-control border-dark-subtle" type="text" name="name" id="name" placeholder="Name" required>
-                    <label for="name" class="text-muted small">Name:</label>
+                    <label for="name" class="text-muted small"><?= $textArray["contact-name"] ?></label>
                 </div>
                 <div class="form-floating mb-2">
                     <input class="form-control border-dark-subtle" type="email" name="email" id="email" placeholder="E-mail" required>
-                    <label for="email" class="text-muted small">E-mail:</label>
+                    <label for="email" class="text-muted small"><?= $textArray["contact-email"] ?></label>
                 </div>
                 <div class="form-floating mb-2">
                     <textarea class="form-control border-dark-subtle" name="message" id="message" placeholder="Message" required></textarea>
-                    <label for="message" class="text-muted small">Message:</label>
+                    <label for="message" class="text-muted small"><?= $textArray["contact-message"] ?></label>
                 </div>
-                <button class="btn btn-outline-info" type="submit">Submit</button>
+                <button class="btn btn-outline-info" type="submit"><?= $textArray["contact-submit"] ?></button>
             </form>
         </section>
         <!-- /Contacts -->

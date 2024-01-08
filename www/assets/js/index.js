@@ -32,18 +32,13 @@ var hideThemeToggler = (hide = true) => {
 };
 
 var toggleLanguageSwitch = () => {
+  
   if (languageToggler.firstElementChild.classList.contains("text-info")) {
-    languageToggler.firstElementChild.classList.remove("text-info");
-    languageToggler.firstElementChild.classList.add("small");
-
-    languageToggler.lastElementChild.classList.add("text-info");
-    languageToggler.lastElementChild.classList.remove("small");
+    document.cookie = "lang=cs; max-age=" + 86400*30;
+    location.reload();
   } else {
-    languageToggler.firstElementChild.classList.remove("small");
-    languageToggler.firstElementChild.classList.add("text-info");
-
-    languageToggler.lastElementChild.classList.add("small");
-    languageToggler.lastElementChild.classList.remove("text-info");
+    document.cookie = "lang=en; max-age=" + 86400*30;
+    location.reload();
   }
 };
 
