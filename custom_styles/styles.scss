@@ -57,6 +57,26 @@ $grid-breakpoints: (
   min-height: 415px;
 }
 
+.form-floating > input.form-control {
+  min-height: 3rem;
+  height: 3rem;
+}
+
+.form-floating > textarea.form-control {
+  min-height: 8rem;
+  height: 8rem;
+}
+
+.form-floating > label {
+  padding-top: 12px;
+  height: 30%;
+}
+
+.form-control:focus {
+  border-color: $info !important;
+  box-shadow: 0 0 8px $info;
+}
+
 @include media-breakpoint-up(sm) {
   .w-sm-75 {
     width: 75% !important;
@@ -66,4 +86,5 @@ $grid-breakpoints: (
     width: 100% !important;
   }
 }
-// @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+//@import "../node_modules/bootstrap/scss/bootstrap.scss";
