@@ -84,75 +84,8 @@
         <!-- Projects -->
         <section class="container">
             <h2 class="display-4 text-center">Projects</h2>
-            <div class="d-flex flex-wrap justify-content-sm-start justify-content-center">
-                <div class="col-10 col-sm-6 col-lg-4 p-2">
-                    <div class="card shadow-info border-info-subtle">
-                        <img class="card-img-top object-fit-contain" style="max-height: 175px;" src="./assets/images/projects/BootstrapCvic.png" alt="Card image cap">
-                        <div class="card-body p-2">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="card-title">Bootstrap cvičení</h5>
-                                <div class="text-secondary small">17.7.2023</div>
-                            </div>
-                            <p class="mb-1"><span class="text-info">Tech Stack:</span> <span class="text-bg-info opacity-75">Bootstrap</span> <span class="text-bg-info opacity-75">HTML</span> <span class="text-bg-info opacity-75">CSS</span></p>
-                            <p class="card-text">Samostatný projekt z kurzu programování na VŠB - Technická univerzita Ostrava. Časový limit 8 hodin.</p>
-                            <div class="d-flex justify-content-between">
-                                <a href="https://www.martincerman.eu/bootstrap-cviceni/index.html" class="btn btn-outline-info" target="_blank">Live preview</a>
-                                <a href="https://github.com/MartinCerman/Bootstrap-cviko" class="btn btn-outline-info" target="_blank">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10 col-sm-6 col-lg-4 p-2">
-                    <div class="card shadow-info border-info-subtle">
-                        <img class="card-img-top object-fit-contain" style="max-height: 175px;" src="./assets/images/projects/BootstrapCvic.png" alt="Card image cap">
-                        <div class="card-body p-2">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="card-title">Bootstrap cvičení</h5>
-                                <div class="text-secondary small">17.7.2023</div>
-                            </div>
-                            <p class="mb-1"><span class="text-info">Tech Stack:</span> <span class="text-bg-info opacity-75">Bootstrap</span> <span class="text-bg-info opacity-75">HTML</span> <span class="text-bg-info opacity-75">CSS</span></p>
-                            <p class="card-text">Samostatný projekt z kurzu programování na VŠB - Technická univerzita Ostrava. Časový limit 8 hodin.</p>
-                            <div class="d-flex justify-content-between">
-                                <a href="https://www.martincerman.eu/bootstrap-cviceni/index.html" class="btn btn-outline-info" target="_blank">Live preview</a>
-                                <a href="https://github.com/MartinCerman/Bootstrap-cviko" class="btn btn-outline-info" target="_blank">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10 col-sm-6 col-lg-4 p-2">
-                    <div class="card shadow-info border-info-subtle">
-                        <img class="card-img-top object-fit-contain" style="max-height: 175px;" src="./assets/images/projects/BootstrapCvic.png" alt="Card image cap">
-                        <div class="card-body p-2">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="card-title">Bootstrap cvičení</h5>
-                                <div class="text-secondary small">17.7.2023</div>
-                            </div>
-                            <p class="mb-1"><span class="text-info">Tech Stack:</span> <span class="text-bg-info opacity-75">Bootstrap</span> <span class="text-bg-info opacity-75">HTML</span> <span class="text-bg-info opacity-75">CSS</span></p>
-                            <p class="card-text">Samostatný projekt z kurzu programování na VŠB - Technická univerzita Ostrava. Časový limit 8 hodin.</p>
-                            <div class="d-flex justify-content-between">
-                                <a href="https://www.martincerman.eu/bootstrap-cviceni/index.html" class="btn btn-outline-info" target="_blank">Live preview</a>
-                                <a href="https://github.com/MartinCerman/Bootstrap-cviko" class="btn btn-outline-info" target="_blank">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10 col-sm-6 col-lg-4 p-2">
-                    <div class="card shadow-info border-info-subtle">
-                        <img class="card-img-top object-fit-contain" style="max-height: 175px;" src="./assets/images/projects/BootstrapCvic.png" alt="Card image cap">
-                        <div class="card-body p-2">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="card-title">Bootstrap cvičení</h5>
-                                <div class="text-secondary small">17.7.2023</div>
-                            </div>
-                            <p class="mb-1"><span class="text-info">Tech Stack:</span> <span class="text-bg-info opacity-75">Bootstrap</span> <span class="text-bg-info opacity-75">HTML</span> <span class="text-bg-info opacity-75">CSS</span></p>
-                            <p class="card-text">Samostatný projekt z kurzu programování na VŠB - Technická univerzita Ostrava. Časový limit 8 hodin.</p>
-                            <div class="d-flex justify-content-between">
-                                <a href="https://www.martincerman.eu/bootstrap-cviceni/index.html" class="btn btn-outline-info" target="_blank">Live preview</a>
-                                <a href="https://github.com/MartinCerman/Bootstrap-cviko" class="btn btn-outline-info" target="_blank">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div id="projectCards" class="d-flex flex-wrap justify-content-sm-start justify-content-center">
+                <!-- Content generated by index.js -->
             </div>
         </section>
         <!-- /Projects -->

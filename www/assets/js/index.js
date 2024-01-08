@@ -32,7 +32,7 @@ var hideThemeToggler = (hide = true) => {
 };
 
 var toggleLanguageSwitch = () => {
-  if(languageToggler.firstElementChild.classList.contains("text-info")){
+  if (languageToggler.firstElementChild.classList.contains("text-info")) {
     languageToggler.firstElementChild.classList.remove("text-info");
     languageToggler.firstElementChild.classList.add("small");
 
@@ -45,4 +45,78 @@ var toggleLanguageSwitch = () => {
     languageToggler.lastElementChild.classList.add("small");
     languageToggler.lastElementChild.classList.remove("text-info");
   }
+};
+
+// Project cards section
+fetch("./assets/data/projects.json")
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+    var cardsContainer = document.getElementById("projectCards");
+
+    data
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .forEach((project) => {
+        cardsContainer.appendChild(createProjectCard(
+          project.imgPath,
+          project.title,
+          project.description,
+          project.liveUrl,
+          project.codeUrl,
+          project.techStack,
+          project.date
+        ));
+        console.log(project);
+      });
+  });
+
+// Generates HTML markup from card data and returns container element.
+function createProjectCard(
+  imgPath,
+  title,
+  description,
+  liveUrl,
+  codeUrl,
+  techStack,
+  date
+) {
+  var container = document.createElement("div");
+  container.classList.add("col-10", "col-sm-6", "col-lg-4", "p-2");
+  var techStackTags = "";
+  techStack.forEach((tag) => {
+    techStackTags += ` <span class="text-bg-info opacity-75">${String(
+      tag
+    )}</span>`;
+  });
+
+  var containerHTML =
+    `
+  <div class="card shadow-info border-info-subtle">
+    <img class="card-img-top object-fit-contain" style="max-height: 175px;" src="${imgPath}" alt="${title}">
+    <div class="d-flex flex-column card-body p-2">
+      <div class="d-flex justify-content-between">
+          <h5 class="card-title">${title}</h5>
+          <div class="text-secondary small text-nowrap">${new Date(date).toLocaleDateString()}</div>
+      </div>
+      <p class="mb-1"><span class="text-info">Tech Stack:</span>` +
+    techStackTags +
+    `</p>
+      <p class="card-text">${description}</p>
+      <div class="mt-auto d-flex justify-content-between">
+    `
+    
+  if(String(liveUrl) != 0){
+    containerHTML += `<a href="${liveUrl}" class="btn btn-outline-info" target="_blank">Live preview</a>`
+  }
+  
+  containerHTML +=`
+          <a href="${codeUrl}" class="btn btn-outline-info" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </div>
+  `;
+
+  container.innerHTML = containerHTML;
+
+  return container;
 }
