@@ -94,15 +94,15 @@
             <h2 class="display-4 text-center">Contact Me</h2>
             <form action="" class="col-md-8 col-10 px-lg-5 p-2 mx-auto">
                 <div class="form-floating mb-2">
-                    <input class="form-control border-dark-subtle" type="text" name="name" id="name" placeholder="Name">
+                    <input class="form-control border-dark-subtle" type="text" name="name" id="name" placeholder="Name" required>
                     <label for="name" class="text-muted small">Name:</label>
                 </div>
                 <div class="form-floating mb-2">
-                    <input class="form-control border-dark-subtle" type="email" name="email" id="email" placeholder="E-mail">
+                    <input class="form-control border-dark-subtle" type="email" name="email" id="email" placeholder="E-mail" required>
                     <label for="email" class="text-muted small">E-mail:</label>
                 </div>
                 <div class="form-floating mb-2">
-                    <textarea class="form-control border-dark-subtle" name="message" id="message" placeholder="Message"></textarea>
+                    <textarea class="form-control border-dark-subtle" name="message" id="message" placeholder="Message" required></textarea>
                     <label for="message" class="text-muted small">Message:</label>
                 </div>
                 <button class="btn btn-outline-info" type="submit">Submit</button>
