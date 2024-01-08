@@ -1,6 +1,28 @@
 <?php 
 
-$textArray = require "./src/locale/en.php";
+$locale = locale_accept_from_http($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+
+if(!isset($_COOKIE["lang"])){
+    if($locale === "cs"){
+        setcookie("lang", "cs", time() + 86400 * 30, "/");
+        $textArray = require "./src/locale/cs.php";
+        $csBtnClass = "text-info";
+        $enBtnClass = "text-secondary small";
+    } else {
+        setcookie("lang", "en", time() + 86400 * 30, "/");
+        $textArray = require "./src/locale/en.php";
+        $enBtnClass = "text-info";
+        $csBtnClass = "text-secondary small";
+    }
+} elseif($_COOKIE["lang"] === "cs"){
+        $textArray = require "./src/locale/cs.php";
+        $csBtnClass = "text-info";
+        $enBtnClass = "text-secondary small";
+} else {
+        $textArray = require "./src/locale/en.php";
+        $enBtnClass = "text-info";
+        $csBtnClass = "text-secondary small";
+}
 
 ?>
 
@@ -52,7 +74,7 @@ $textArray = require "./src/locale/en.php";
                     </svg>
                 </div>
                 <div id="language-toggler">
-                    <span class="text-info">EN</span> / <span class="text-secondary small">CZ</span>
+                    <span class="<?= $enBtnClass ?>">EN</span> / <span class="<?= $csBtnClass ?>">CZ</span>
                 </div>
             </div>
 
