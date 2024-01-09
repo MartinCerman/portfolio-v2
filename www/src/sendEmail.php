@@ -1,5 +1,16 @@
 <?php
 
+if($_SERVER["REQUEST_METHOD"] !== "POST"
+ || !isset($_POST["name"]) 
+ || !isset($_POST["email"]) 
+ || !isset($_POST["message"]) 
+ || $_POST["name"] === "" 
+ || $_POST["email"] === "" 
+ || $_POST["message"] === ""){
+    http_response_code(400);
+    return;
+}
+
 use Nette\Mail\SmtpException;
 
 require 'vendor/autoload.php';
@@ -19,7 +30,7 @@ try{
     $mailer->send($mail);
     echo "E-mail successfully sent!";
 } catch(SmtpException $ex) {
-    echo "Something bad happened when sending e-mail!";
+    echo "Something bad happened!";
     http_response_code(502);
 }
 ?>

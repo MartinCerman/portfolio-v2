@@ -129,7 +129,7 @@ if(!isset($_COOKIE["lang"])){
         <!-- Contact -->
         <section id="contact" class="container mt-3">
             <h2 class="display-4 text-center"><?= $textArray["contact-heading"] ?></h2>
-            <form action="" class="col-md-8 col-10 px-lg-5 p-2 mx-auto">
+            <form id="contactForm" action="src/sendEmail.php" method="post" class="col-md-8 col-10 px-lg-5 p-2 mx-auto" target="_blank">
                 <div class="form-floating mb-2">
                     <input class="form-control border-dark-subtle" type="text" name="name" id="name" placeholder="Name" required>
                     <label for="name" class="text-muted small"><?= $textArray["contact-name"] ?></label>
@@ -142,13 +142,22 @@ if(!isset($_COOKIE["lang"])){
                     <textarea class="form-control border-dark-subtle" name="message" id="message" placeholder="Message" required></textarea>
                     <label for="message" class="text-muted small"><?= $textArray["contact-message"] ?></label>
                 </div>
-                <button class="btn btn-outline-info" type="submit"><?= $textArray["contact-submit"] ?></button>
+                <button class="btn btn-outline-info d-flex align-items-center justify-content-center" type="submit">
+                    <span class=""><?= $textArray["contact-submit"] ?></span>
+                    <span class="d-none spinner-border text-info" style="width: 1.75rem; height: 1.75rem;" role="status" aria-hidden="true"></span>
+                    <svg class="d-none bi text-success" width="40" height="40" fill="currentColor">
+                        <use xlink:href="./assets/images/icons/bootstrap-icons.svg#check2" />
+                    </svg>
+                    <svg class="d-none bi text-info" width="35" height="35" fill="currentColor">
+                        <use xlink:href="./assets/images/icons/bootstrap-icons.svg#x-lg" />
+                    </svg>
+                </button>
             </form>
         </section>
         <!-- /Contacts -->
     </main>
     <footer>
-
+                    
     </footer>
     <script src="./assets/js/vendor/bootstrap.bundle.min.js"></script>
     <script src="./assets/js/index.js"></script>
