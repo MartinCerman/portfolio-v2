@@ -25,6 +25,7 @@ $grid-breakpoints: (
 @import "../node_modules/bootstrap/scss/buttons";
 @import "../node_modules/bootstrap/scss/dropdown";
 @import "../node_modules/bootstrap/scss/transitions";
+@import "../node_modules/bootstrap/scss/spinners";
 
 @each $color, $value in $theme-colors {
   .shadow-#{$color} {
@@ -75,6 +76,11 @@ $grid-breakpoints: (
 .form-control:focus {
   border-color: $info !important;
   box-shadow: 0 0 8px $info;
+}
+
+button[type="submit"] {
+  width: 76px;
+  height: 38px;
 }
 
 @include media-breakpoint-up(sm) {

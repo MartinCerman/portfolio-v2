@@ -6,7 +6,7 @@ document.addEventListener("click", () => {
 });
 
 // Dark / light theme toggle.
-var themeToggler = document.getElementById("theme-toggler");
+const themeToggler = document.getElementById("theme-toggler");
 themeToggler.addEventListener("click", () => {
   if (document.documentElement.getAttribute("data-bs-theme") === "dark") {
     document.documentElement.setAttribute("data-bs-theme", "light");
@@ -20,10 +20,10 @@ themeToggler.addEventListener("click", () => {
 });
 
 // Language toggle.
-var languageToggler = document.getElementById("language-toggler");
+const languageToggler = document.getElementById("language-toggler");
 languageToggler.addEventListener("click", () => toggleLanguageSwitch());
 
-var hideThemeToggler = (hide = true) => {
+function hideThemeToggler(hide = true) {
   if (hide === true) {
     document.getElementById("theme-toggler").classList.add("d-none");
   } else {
@@ -31,7 +31,7 @@ var hideThemeToggler = (hide = true) => {
   }
 };
 
-var toggleLanguageSwitch = () => {
+function toggleLanguageSwitch() {
   
   if (languageToggler.firstElementChild.classList.contains("text-info")) {
     document.cookie = "lang=cs; max-age=" + 86400*30;
@@ -46,8 +46,7 @@ var toggleLanguageSwitch = () => {
 fetch("./assets/data/projects.json")
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
-    var cardsContainer = document.getElementById("projectCards");
+    const cardsContainer = document.getElementById("projectCards");
 
     data
       .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -61,7 +60,6 @@ fetch("./assets/data/projects.json")
           project.techStack,
           project.date
         ));
-        console.log(project);
       });
   });
 
@@ -75,16 +73,16 @@ function createProjectCard(
   techStack,
   date
 ) {
-  var container = document.createElement("div");
+  const container = document.createElement("div");
   container.classList.add("col-10", "col-sm-6", "col-lg-4", "p-2");
-  var techStackTags = "";
+  let techStackTags = "";
   techStack.forEach((tag) => {
     techStackTags += ` <span class="text-bg-info opacity-75">${String(
       tag
     )}</span>`;
   });
 
-  var containerHTML =
+  let containerHTML =
     `
   <div class="card shadow-info border-info-subtle">
     <img class="card-img-top object-fit-contain" style="max-height: 175px;" src="${imgPath}" alt="${title}">
@@ -114,4 +112,56 @@ function createProjectCard(
   container.innerHTML = containerHTML;
 
   return container;
+}
+
+// Contact form submit
+const btnSubmit = document.querySelector("button[type='submit']");
+const contactForm = document.getElementById("contactForm");
+
+contactForm.addEventListener("submit", async (e) =>{
+  e.preventDefault();
+  const inputName = e.target.name;
+  const inputEmail = e.target.email;
+  const inputMessage = e.target.message;
+  
+  if(!inputName.validity.valid || !inputEmail.validity.valid || !inputMessage.validity.valid){
+    return;
+  } else {
+    setSubmitBtnContent(1);
+    let responseCode = await postFormData(inputName.value,inputEmail.value, inputMessage.value);
+    if(responseCode === 200){
+      setSubmitBtnContent(2);
+    } else {
+      setSubmitBtnContent(3);
+      alert("Form submission failed due to a server error. Please retry later.")
+    }
+  }
+});
+
+
+async function postFormData(name, email, message){
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("email", email);
+  formData.append("message", message);
+
+  const response = await fetch("src/sendEmail.php",{
+    method: "POST",
+    body: formData
+  });
+
+  return response.status;
+}
+
+function setSubmitBtnContent(elementIndex){
+  const btnSubmitChildren = document.querySelector("button[type='submit']").children;
+  if(elementIndex >= btnSubmitChildren.length){
+    return;
+  }
+
+  for(var i = 0; i < btnSubmitChildren.length; ++i){
+    btnSubmitChildren[i].classList.add("d-none");
+  }
+
+  btnSubmitChildren[elementIndex].classList.remove("d-none");
 }
