@@ -67,7 +67,7 @@ if(!isset($_COOKIE["lang"])){
                     </li>
                 </ul>
             </div>
-            <div class="d-flex gap-2 align-items-center position-absolute end-0 top-0">
+            <div class="d-flex gap-2 align-items-center position-absolute end-0 top-0 me-1">
                 <div id="theme-toggler">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="./assets/images/icons/bootstrap-icons.svg#moon-fill" />
@@ -93,10 +93,18 @@ if(!isset($_COOKIE["lang"])){
                 <p class="pe-5 lead"><?= $textArray["about-p1"] ?></p>
             </div>
             <div class="accordion" id="aboutMeAccordion">
-                <div class="w-100 text-center">
+                <!-- <div class="w-100 text-center">
                     <svg class="bi text-info border border-1 border-info rounded-5" width="60" height="30" fill="currentColor" data-bs-toggle="collapse" data-bs-target="#itemOne" aria-expanded="false" aria-controls="collapseOne">
                         <use xlink:href="./assets/images/icons/bootstrap-icons.svg#chevron-double-down" />
                     </svg>
+                </div> -->
+                <div class="d-flex justify-content-center text-center mt-5">
+                    <div id="showMore" class="text-info border border-1 border-info rounded-5 collapsed"  data-bs-toggle="collapse" data-bs-target="#itemOne" aria-expanded="false" aria-controls="collapseOne">
+                        <p class="m-0">Show More</p>
+                    <svg class="bi" width="150" height="30" fill="currentColor">
+                        <use xlink:href="./assets/images/icons/bootstrap-icons.svg#chevron-double-down" />
+                    </svg>
+                    </div>
                 </div>
                 <div id="itemOne" class="collapse">
                     <div class="d-flex flex-column flex-md-row align-items-center">

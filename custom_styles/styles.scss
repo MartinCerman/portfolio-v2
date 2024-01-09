@@ -62,6 +62,14 @@ html {
   box-shadow: none;
 }
 
+#showMore svg {
+  transition: transform 0.5s;
+}
+
+#showMore:not(.collapsed) svg {
+  transform: scaleY(-1);
+}
+
 #projectCards > * > * {
   min-height: 415px;
 }

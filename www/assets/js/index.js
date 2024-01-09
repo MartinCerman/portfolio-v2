@@ -42,6 +42,10 @@ function toggleLanguageSwitch() {
   }
 };
 
+// Show More button
+const btnShowMore = document.getElementById("showMore");
+
+
 // Project cards section
 let projectsFilePath = "./assets/data/projects-";
 projectsFilePath += document.documentElement.getAttribute("lang");
