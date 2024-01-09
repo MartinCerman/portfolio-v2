@@ -1,0 +1,65 @@
+[
+  {
+    "imgPath": "./assets/images/projects/BootstrapCvic.png",
+    "title": "Bootstrap Exercise",
+    "description": "An individual project from the programming course at the Technical University of Ostrava. Time limit 8 hours.",
+    "liveUrl": "https://www.martincerman.eu/bootstrap-cviceni/index.html",
+    "codeUrl": "https://github.com/MartinCerman/Bootstrap-cviko",
+    "techStack": ["Bootstrap", "HTML", "CSS"],
+    "date": "2023-07-17"
+  },
+  {
+    "imgPath": "./assets/images/projects/js-cviko.png",
+    "title": "Javascript Form Exercise",
+    "description": "An individual project from the programming course at the Technical University of Ostrava. Time limit 4 hours.",
+    "liveUrl": "https://www.martincerman.eu/javascript-cviceni/index.html",
+    "codeUrl": "https://github.com/MartinCerman/Javascript-cviko",
+    "techStack": ["HTML", "CSS", "JS"],
+    "date": "2023-08-02"
+  },
+  {
+    "imgPath": "./assets/images/projects/react-cviko.png",
+    "title": "React Exercise",
+    "description": "An individual project from the programming course at the Technical University of Ostrava. Time limit 8 hours.",
+    "liveUrl": "https://www.martincerman.eu/react-cviceni/index.html",
+    "codeUrl": "https://github.com/MartinCerman/React-cviko",
+    "techStack": ["HTML", "CSS", "JS", "React"],
+    "date": "2023-08-04"
+  },
+  {
+    "imgPath": "./assets/images/projects/loginsystem.png",
+    "title": "PHP Exercise",
+    "description": "An individual project from the programming course at the Technical University of Ostrava. Time limit 8 hours.",
+    "liveUrl": "https://www.martincerman.eu/php-cviceni/",
+    "codeUrl": "https://github.com/MartinCerman/PHP-cviko",
+    "techStack": ["HTML", "PHP"],
+    "date": "2023-08-21"
+  },
+  {
+    "imgPath": "./assets/images/projects/multi-step-form.png",
+    "title": "Multistep Form",
+    "description": "A multistep form challenge from FrontendMentor.io",
+    "liveUrl": "https://martincerman.github.io/FrontendMentorChallenges/multi-step-form-main/index.html",
+    "codeUrl": "https://github.com/MartinCerman/FrontendMentorChallenges/tree/main/multi-step-form-main",
+    "techStack": ["HTML", "CSS", "JS"],
+    "date": "2023-08-15"
+  },
+  {
+    "imgPath": "./assets/images/projects/ASPNetSchool.png",
+    "title": "ASP.NET - Grade Management System",
+    "description": "A group project from the programming course at the Technical University of Ostrava. Logins for various roles: Miluna/Karel/teacher Password: Abcd1234.",
+    "liveUrl": "http://schoolapp.aspifyhost.cz/",
+    "codeUrl": "https://github.com/MartinCerman/ASPNetSchool",
+    "techStack": ["C#", "HTML", "Bootstrap"],
+    "date": "2023-12-08"
+  },
+  {
+    "imgPath": "./assets/images/projects/WindowsFormsCvk.png",
+    "title": "Windows Forms Exercise",
+    "description": "An individual project from the programming course at the Technical University of Ostrava. Time limit 2 hours.",
+    "liveUrl": "",
+    "codeUrl": "https://github.com/MartinCerman/WindowsForms-Cviko",
+    "techStack": ["C#", "Windows Forms"],
+    "date": "2023-10-05"
+  }
+]

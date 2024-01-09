@@ -1,5 +1,6 @@
 <?php
 return [
+    "page-description" => "My personal page which includes my portfolio, the tech stack I use, or links to GitHub.",
     "header-about" => "About",
     "header-skills" => "Skills",
     "header-projects" => "Projects",

@@ -35,7 +35,7 @@ if(!isset($_COOKIE["lang"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Moje osobní stránka která obsahuje portfolio, tech stack co používám nebo třeba odkazy na GitHub.">
+    <meta name="description" content="<?= $textArray["page-description"] ?>">
     <meta name="keywords" content="HTML,CSS,JavaScript,portfolio,dotnet,csharp">
     <meta name="author" content="Martin Čerman">
     <title>MartinCerman.eu</title>

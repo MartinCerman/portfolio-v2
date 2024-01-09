@@ -1,5 +1,6 @@
 <?php
 return [
+    "page-description" => "Moje osobní stránka která obsahuje portfolio, tech stack co používám nebo třeba odkazy na GitHub.",
     "header-about" => "O mně",
     "header-skills" => "Dovednosti",
     "header-projects" => "Projeky",
