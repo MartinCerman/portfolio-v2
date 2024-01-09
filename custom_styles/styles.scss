@@ -33,8 +33,16 @@ $grid-breakpoints: (
   }
 }
 
+html {
+  scroll-padding-top: 75px;
+}
+
 .nav-link {
   @include font-size(1.3rem);
+}
+
+.nav-link:hover {
+  text-shadow: 0 0 1rem $info, 0 0 1rem $info, 0 0 1rem $info;
 }
 
 .display-6 {
@@ -52,6 +60,14 @@ $grid-breakpoints: (
 
 .navbar-toggler:focus {
   box-shadow: none;
+}
+
+#showMore svg {
+  transition: transform 0.5s;
+}
+
+#showMore:not(.collapsed) svg {
+  transform: scaleY(-1);
 }
 
 #projectCards > * > * {

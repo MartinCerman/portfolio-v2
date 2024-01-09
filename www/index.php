@@ -1,24 +1,38 @@
 <?php 
 
 $locale = locale_accept_from_http($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+if(isset($_COOKIE["theme"])){
+    $theme = $_COOKIE["theme"];
+} else {
+    $theme = "dark";
+}
 
 if(!isset($_COOKIE["lang"])){
     if($locale === "cs"){
-        setcookie("lang", "cs", time() + 86400 * 30, "/");
+        setcookie("lang", "cs", [
+            'expires' => time() + 86400 * 30,
+            'path' => '/',
+            'samesite' => 'Lax']);
         $textArray = require "./src/locale/cs.php";
         $csBtnClass = "text-info";
         $enBtnClass = "text-secondary small";
     } else {
-        setcookie("lang", "en", time() + 86400 * 30, "/");
+        $locale = "en";
+        setcookie("lang", "en", [
+            'expires' => time() + 86400 * 30,
+            'path' => '/',
+            'samesite' => 'Lax']);
         $textArray = require "./src/locale/en.php";
         $enBtnClass = "text-info";
         $csBtnClass = "text-secondary small";
     }
 } elseif($_COOKIE["lang"] === "cs"){
+        $locale = "cs";
         $textArray = require "./src/locale/cs.php";
         $csBtnClass = "text-info";
         $enBtnClass = "text-secondary small";
 } else {
+        $locale = "en";
         $textArray = require "./src/locale/en.php";
         $enBtnClass = "text-info";
         $csBtnClass = "text-secondary small";
@@ -27,21 +41,21 @@ if(!isset($_COOKIE["lang"])){
 ?>
 
 <!DOCTYPE html>
-<html lang="cs" data-bs-theme="dark">
+<html lang="<?= $locale ?>" data-bs-theme="<?= $theme ?>">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Moje osobní stránka která obsahuje portfolio, tech stack co používám, odkazy na GitHub a další užitečné věci.">
+    <meta name="description" content="<?= $textArray["page-description"] ?>">
     <meta name="keywords" content="HTML,CSS,JavaScript,portfolio,dotnet,csharp">
     <meta name="author" content="Martin Čerman">
     <title>MartinCerman.eu</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="container-xl">
-    <nav class="navbar navbar-expand-sm">
-        <div class="container-fluid">
+<body class="container-xl pt-5">
+    <nav id="header" class="navbar navbar-expand-sm">
+        <div class="container-fluid bg-body fixed-top pt-2">
             <a class="navbar-brand" href="#">
                 <h1 class="display-6">Martin Čerman .eu</h1>
             </a>
@@ -64,13 +78,13 @@ if(!isset($_COOKIE["lang"])){
                     </li>
                 </ul>
             </div>
-            <div class="d-flex gap-2 align-items-center position-absolute end-0 top-0">
+            <div class="d-flex gap-2 align-items-center position-absolute end-0 top-0 me-1">
                 <div id="theme-toggler">
                     <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="./assets/images/icons/bootstrap-icons.svg#sun-fill" />
+                        <use xlink:href="./assets/images/icons/bootstrap-icons.svg#moon-fill" />
                     </svg>
                     <svg class="bi d-none" width="20" height="20" fill="currentColor">
-                        <use xlink:href="./assets/images/icons/bootstrap-icons.svg#moon-fill" />
+                        <use xlink:href="./assets/images/icons/bootstrap-icons.svg#sun-fill" />
                     </svg>
                 </div>
                 <div id="language-toggler">
@@ -80,7 +94,7 @@ if(!isset($_COOKIE["lang"])){
 
         </div>
     </nav>
-    <main>
+    <main data-bs-spy="scroll" data-bs-target="#header" data-bs-root-margin="0% 0% -20% 0%">
         <!-- About -->
         <section id="about" class="my-5">
             <div class="w-sm-75 pe-5">
@@ -90,10 +104,18 @@ if(!isset($_COOKIE["lang"])){
                 <p class="pe-5 lead"><?= $textArray["about-p1"] ?></p>
             </div>
             <div class="accordion" id="aboutMeAccordion">
-                <div class="w-100 text-center">
+                <!-- <div class="w-100 text-center">
                     <svg class="bi text-info border border-1 border-info rounded-5" width="60" height="30" fill="currentColor" data-bs-toggle="collapse" data-bs-target="#itemOne" aria-expanded="false" aria-controls="collapseOne">
                         <use xlink:href="./assets/images/icons/bootstrap-icons.svg#chevron-double-down" />
                     </svg>
+                </div> -->
+                <div class="d-flex justify-content-center text-center mt-5">
+                    <div id="showMore" class="text-info border border-1 border-info rounded-5 collapsed"  data-bs-toggle="collapse" data-bs-target="#itemOne" aria-expanded="false" aria-controls="collapseOne">
+                        <p class="m-0"><?= $textArray["about-button"] ?></p>
+                    <svg class="bi" width="150" height="30" fill="currentColor">
+                        <use xlink:href="./assets/images/icons/bootstrap-icons.svg#chevron-double-down" />
+                    </svg>
+                    </div>
                 </div>
                 <div id="itemOne" class="collapse">
                     <div class="d-flex flex-column flex-md-row align-items-center">
@@ -105,7 +127,7 @@ if(!isset($_COOKIE["lang"])){
         </section>
         <!-- /About -->
         <!-- Skills -->
-        <section id="skills">
+        <section id="skills" class="my-5">
         <h2 class="display-4 text-center"><?= $textArray["skills-heading"] ?></h2>
         <h3 class="h1 fw-light mb-0"><?= $textArray["skills-primary"] ?></h3>
         <p class="text-secondary lh-1"><?= $textArray["skills-primary-text"] ?></p>
@@ -119,16 +141,19 @@ if(!isset($_COOKIE["lang"])){
         </section>
         <!-- /Skills -->
         <!-- Projects -->
-        <section id="projects" class="container">
-            <h2 class="display-4 text-center"><?= $textArray["projects-heading"] ?></h2>
+        <section id="projects" class="container my-5">
+            <h2 class="display-4 text-center mb-3"><?= $textArray["projects-heading"] ?></h2>
             <div id="projectCards" class="d-flex flex-wrap justify-content-sm-start justify-content-center">
                 <!-- Content generated by index.js -->
             </div>
         </section>
         <!-- /Projects -->
         <!-- Contact -->
-        <section id="contact" class="container mt-3">
-            <h2 class="display-4 text-center"><?= $textArray["contact-heading"] ?></h2>
+        <section id="contact" class="container mt-3 my-5">
+            <h2 class="display-4 text-center mb-0"><?= $textArray["contact-heading"] ?></h2>
+            <div>
+                <p class="text-secondary lh-1 col-10 mx-auto text-md-center"><?= $textArray["contact-p1"] ?></p>
+            </div>
             <form id="contactForm" action="src/sendEmail.php" method="post" class="col-md-8 col-10 px-lg-5 p-2 mx-auto" target="_blank">
                 <div class="form-floating mb-2">
                     <input class="form-control border-dark-subtle" type="text" name="name" id="name" placeholder="Name" required>
@@ -157,7 +182,9 @@ if(!isset($_COOKIE["lang"])){
         <!-- /Contacts -->
     </main>
     <footer>
-                    
+        <div class="text-center">
+            <p><?= $textArray["footer-p1"] ?></p>
+        </div>
     </footer>
     <script src="./assets/js/vendor/bootstrap.bundle.min.js"></script>
     <script src="./assets/js/index.js"></script>
