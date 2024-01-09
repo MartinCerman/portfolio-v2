@@ -170,13 +170,16 @@ contactForm.addEventListener("submit", async (e) =>{
 
 
 async function postFormData(name, email, message){
-  const formData = new FormData();
+  const formData = new URLSearchParams();
   formData.append("name", name);
   formData.append("email", email);
   formData.append("message", message);
 
   const response = await fetch("src/sendEmail.php",{
     method: "POST",
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
     body: formData
   });
 
