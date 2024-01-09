@@ -11,25 +11,33 @@ if($_SERVER["REQUEST_METHOD"] !== "POST"
     return;
 }
 
-use Nette\Mail\SmtpException;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 
-$mailer = new Nette\Mail\SmtpMailer(
-    host: 'smtp.gmail.com',
-    username: 'cermanm@gmail.com',
-    password: 'vkbdoxdghsgocyax',
-    encryption: "tls");
+$mail = new PHPMailer(true);
 
-$mail = new Nette\Mail\Message;
-$mail->setFrom('cermanm@gmail.com', 'Portfolio Form')
-     ->addTo('kennyibiza@seznam.cz', 'Martin Čerman')
-     ->setSubject('martincerman.eu - nová zpráva')
-     ->setBody("Jmeno: {$_POST["name"]}\nEmail: {$_POST["email"]}\n\n{$_POST["message"]}");
-try{
-    $mailer->send($mail);
+try {
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'cermanm@gmail.com';
+    $mail->Password   = 'password';
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+    $mail->Port       = 465;
+    $mail->CharSet    = PHPMailer::CHARSET_UTF8;
+    $mail->Encoding   = PHPMailer::ENCODING_BASE64;
+
+    $mail->setFrom('cermanm@gmail.com', 'Portfolio Form');
+    $mail->addAddress('kennyibiza@seznam.cz', 'Martin Čerman');
+    $mail->Subject = 'martincerman.eu - nová zpráva';
+    $mail->Body    = "Jmeno: {$_POST["name"]}\nEmail: {$_POST["email"]}\n\n{$_POST["message"]}";
+
+    $mail->send();
+
     echo "E-mail successfully sent!";
-} catch(SmtpException $ex) {
+} catch (Exception $e) {
     echo "Something bad happened!";
     http_response_code(502);
 }
