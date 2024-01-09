@@ -19,9 +19,11 @@ return [
     "skills-other-text" => "- At least I know what you're talking about, if that counts.",
     "projects-heading" => "Projects",
     "projects-button1" => "Live Preview",
-    "contact-heading" => "Contact Me",
+    "contact-heading" => "Contact Me",  
+    "contact-p1" => "Whether you have a question or just want to say hi, feel free to send a message.",
     "contact-name" => "Name:",
     "contact-email" => "E-mail:",
     "contact-message" => "Message:",
-    "contact-submit" => "Submit"
+    "contact-submit" => "Submit",
+    "footer-p1" => "© Created by Martin Čerman in 2024."
 ];

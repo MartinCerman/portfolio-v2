@@ -1,16 +1,27 @@
 <?php 
 
 $locale = locale_accept_from_http($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+if(isset($_COOKIE["theme"])){
+    $theme = $_COOKIE["theme"];
+} else {
+    $theme = "dark";
+}
 
 if(!isset($_COOKIE["lang"])){
     if($locale === "cs"){
-        setcookie("lang", "cs", time() + 86400 * 30, "/");
+        setcookie("lang", "cs", [
+            'expires' => time() + 86400 * 30,
+            'path' => '/',
+            'samesite' => 'Lax']);
         $textArray = require "./src/locale/cs.php";
         $csBtnClass = "text-info";
         $enBtnClass = "text-secondary small";
     } else {
         $locale = "en";
-        setcookie("lang", "en", time() + 86400 * 30, "/");
+        setcookie("lang", "en", [
+            'expires' => time() + 86400 * 30,
+            'path' => '/',
+            'samesite' => 'Lax']);
         $textArray = require "./src/locale/en.php";
         $enBtnClass = "text-info";
         $csBtnClass = "text-secondary small";
@@ -30,7 +41,7 @@ if(!isset($_COOKIE["lang"])){
 ?>
 
 <!DOCTYPE html>
-<html lang="<?= $locale ?>" data-bs-theme="dark">
+<html lang="<?= $locale ?>" data-bs-theme="<?= $theme ?>">
 
 <head>
     <meta charset="UTF-8">
@@ -139,7 +150,10 @@ if(!isset($_COOKIE["lang"])){
         <!-- /Projects -->
         <!-- Contact -->
         <section id="contact" class="container mt-3 my-5">
-            <h2 class="display-4 text-center"><?= $textArray["contact-heading"] ?></h2>
+            <h2 class="display-4 text-center mb-0"><?= $textArray["contact-heading"] ?></h2>
+            <div>
+                <p class="text-secondary lh-1 col-10 mx-auto text-md-center"><?= $textArray["contact-p1"] ?></p>
+            </div>
             <form id="contactForm" action="src/sendEmail.php" method="post" class="col-md-8 col-10 px-lg-5 p-2 mx-auto" target="_blank">
                 <div class="form-floating mb-2">
                     <input class="form-control border-dark-subtle" type="text" name="name" id="name" placeholder="Name" required>
@@ -168,7 +182,9 @@ if(!isset($_COOKIE["lang"])){
         <!-- /Contacts -->
     </main>
     <footer>
-                    
+        <div class="text-center">
+            <p><?= $textArray["footer-p1"] ?></p>
+        </div>
     </footer>
     <script src="./assets/js/vendor/bootstrap.bundle.min.js"></script>
     <script src="./assets/js/index.js"></script>

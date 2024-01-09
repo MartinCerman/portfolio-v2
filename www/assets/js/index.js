@@ -7,15 +7,29 @@ document.addEventListener("click", () => {
 
 // Dark / light theme toggle.
 const themeToggler = document.getElementById("theme-toggler");
+
+// Sets proper theme on load.
+
+if (document.documentElement.getAttribute("data-bs-theme") === "dark"){
+  themeToggler.firstElementChild.classList.remove("d-none");
+  themeToggler.lastElementChild.classList.add("d-none");
+} else {
+  themeToggler.firstElementChild.classList.add("d-none");
+  themeToggler.lastElementChild.classList.remove("d-none");
+};
+
+// Handles theme toggler button.
 themeToggler.addEventListener("click", () => {
   if (document.documentElement.getAttribute("data-bs-theme") === "dark") {
     document.documentElement.setAttribute("data-bs-theme", "light");
     themeToggler.firstElementChild.classList.add("d-none");
     themeToggler.lastElementChild.classList.remove("d-none");
+    document.cookie = "theme=light; SameSite=Lax; max-age=" + 86400*30;
   } else {
     document.documentElement.setAttribute("data-bs-theme", "dark");
     themeToggler.firstElementChild.classList.remove("d-none");
     themeToggler.lastElementChild.classList.add("d-none");
+    document.cookie = "theme=dark; SameSite=Lax; max-age=" + 86400*30;
   }
 });
 
@@ -34,10 +48,10 @@ function hideThemeToggler(hide = true) {
 function toggleLanguageSwitch() {
   
   if (languageToggler.firstElementChild.classList.contains("text-info")) {
-    document.cookie = "lang=cs; max-age=" + 86400*30;
+    document.cookie = "lang=cs; SameSite=Lax; max-age=" + 86400*30;
     location.reload();
   } else {
-    document.cookie = "lang=en; max-age=" + 86400*30;
+    document.cookie = "lang=en; SameSite=Lax; max-age=" + 86400*30;
     location.reload();
   }
 };

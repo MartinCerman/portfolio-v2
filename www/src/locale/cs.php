@@ -19,9 +19,11 @@ return [
     "skills-other-text" => "- Aspoň vím o čem se mluví, pokud se to počítá.",
     "projects-heading" => "Projekty",
     "projects-button1" => "Živý náhled",
-    "contact-heading" => "Kontaktujte mě",
+    "contact-heading" => "Kontaktujte mě",    
+    "contact-p1" => "Pokud máte nějakou otázku nebo chcete jen pozdravit, neváhejte mě kontaktovat.",
     "contact-name" => "Jméno:",
     "contact-email" => "E-mail:",
     "contact-message" => "Zpráva:",
-    "contact-submit" => "Odeslat"
+    "contact-submit" => "Odeslat",
+    "footer-p1" => "© V roce 2024 vytvořil Martin Čerman."
 ];
