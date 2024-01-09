@@ -107,8 +107,16 @@ function createProjectCard(
     `
     
   if(String(liveUrl) != 0){
-    containerHTML += `<a href="${liveUrl}" class="btn btn-outline-info" target="_blank">Live preview</a>`
+    containerHTML += `<a href="${liveUrl}" class="btn btn-outline-info" target="_blank">`
+
+    if(document.documentElement.getAttribute("lang") === "cs"){
+      containerHTML += `Živý náhled</a>`
+    } else {
+      containerHTML += `Live Preview</a>`
+    }
   }
+
+  
   
   containerHTML +=`
           <a href="${codeUrl}" class="btn btn-outline-info" target="_blank">GitHub</a>
