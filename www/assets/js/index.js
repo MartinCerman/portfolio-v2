@@ -43,7 +43,11 @@ function toggleLanguageSwitch() {
 };
 
 // Project cards section
-fetch("./assets/data/projects.json")
+let projectsFilePath = "./assets/data/projects-";
+projectsFilePath += document.documentElement.getAttribute("lang");
+projectsFilePath += ".json";
+
+fetch(projectsFilePath)
   .then((response) => response.json())
   .then((data) => {
     const cardsContainer = document.getElementById("projectCards");

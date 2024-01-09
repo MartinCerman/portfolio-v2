@@ -47,7 +47,7 @@
   {
     "imgPath": "./assets/images/projects/ASPNetSchool.png",
     "title": "ASP.NET - Grade Management System",
-    "description": "A group project from the programming course at the Technical University of Ostrava. Logins for various roles: Miluna/Karel/teacher Password: Abcd1234.",
+    "description": "A group project from the programming course at the TUO. Logins: Miluna/Karel/teacher Password: Abcd1234.",
     "liveUrl": "http://schoolapp.aspifyhost.cz/",
     "codeUrl": "https://github.com/MartinCerman/ASPNetSchool",
     "techStack": ["C#", "HTML", "Bootstrap"],
