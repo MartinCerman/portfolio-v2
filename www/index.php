@@ -59,13 +59,13 @@ if (!isset($_COOKIE["lang"])) {
     <header id="header" class="navbar navbar-expand-sm">
         <nav class="container-fluid bg-body fixed-top pt-2">
             <a class="navbar-brand" href="#">
-                <h1 class="display-6">Martin Čerman .eu</h1>
+                <h1 class="display-6 d-sm-inline-block d-none">Martin Čerman .eu</h1>
             </a>
             <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon me-3"></span>
             </button>
             <div class="collapse navbar-collapse" id="headerNav">
-                <ul class="navbar-nav w-sm-75 ms-sm-auto ms-sm-5 d-flex justify-content-around text-center">
+                <ul class="navbar-nav w-sm-75 ms-sm-auto d-flex justify-content-around text-center">
                     <li class="nav-item ms-lg-5">
                         <a class="nav-link" aria-current="page" href="#about"><?= $textArray["header-about"] ?></a>
                     </li>
