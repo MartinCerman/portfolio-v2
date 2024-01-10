@@ -1,18 +1,19 @@
-<?php 
+<?php
 
 $locale = locale_accept_from_http($_SERVER['HTTP_ACCEPT_LANGUAGE']);
-if(isset($_COOKIE["theme"])){
+if (isset($_COOKIE["theme"])) {
     $theme = $_COOKIE["theme"];
 } else {
     $theme = "dark";
 }
 
-if(!isset($_COOKIE["lang"])){
-    if($locale === "cs"){
+if (!isset($_COOKIE["lang"])) {
+    if ($locale === "cs") {
         setcookie("lang", "cs", [
             'expires' => time() + 86400 * 30,
             'path' => '/',
-            'samesite' => 'Lax']);
+            'samesite' => 'Lax'
+        ]);
         $textArray = require "./src/locale/cs.php";
         $csBtnClass = "text-info";
         $enBtnClass = "text-secondary small";
@@ -21,21 +22,22 @@ if(!isset($_COOKIE["lang"])){
         setcookie("lang", "en", [
             'expires' => time() + 86400 * 30,
             'path' => '/',
-            'samesite' => 'Lax']);
+            'samesite' => 'Lax'
+        ]);
         $textArray = require "./src/locale/en.php";
         $enBtnClass = "text-info";
         $csBtnClass = "text-secondary small";
     }
-} elseif($_COOKIE["lang"] === "cs"){
-        $locale = "cs";
-        $textArray = require "./src/locale/cs.php";
-        $csBtnClass = "text-info";
-        $enBtnClass = "text-secondary small";
+} elseif ($_COOKIE["lang"] === "cs") {
+    $locale = "cs";
+    $textArray = require "./src/locale/cs.php";
+    $csBtnClass = "text-info";
+    $enBtnClass = "text-secondary small";
 } else {
-        $locale = "en";
-        $textArray = require "./src/locale/en.php";
-        $enBtnClass = "text-info";
-        $csBtnClass = "text-secondary small";
+    $locale = "en";
+    $textArray = require "./src/locale/en.php";
+    $enBtnClass = "text-info";
+    $csBtnClass = "text-secondary small";
 }
 
 ?>
@@ -54,8 +56,8 @@ if(!isset($_COOKIE["lang"])){
 </head>
 
 <body class="container-xl pt-5">
-    <nav id="header" class="navbar navbar-expand-sm">
-        <div class="container-fluid bg-body fixed-top pt-2">
+    <header id="header" class="navbar navbar-expand-sm">
+        <nav class="container-fluid bg-body fixed-top pt-2">
             <a class="navbar-brand" href="#">
                 <h1 class="display-6">Martin Čerman .eu</h1>
             </a>
@@ -91,9 +93,8 @@ if(!isset($_COOKIE["lang"])){
                     <span class="<?= $enBtnClass ?>">EN</span> / <span class="<?= $csBtnClass ?>">CZ</span>
                 </div>
             </div>
-
-        </div>
-    </nav>
+        </nav>
+    </header>
     <main data-bs-spy="scroll" data-bs-target="#header" data-bs-root-margin="0% 0% -20% 0%">
         <!-- About -->
         <section id="about" class="my-5">
@@ -104,17 +105,12 @@ if(!isset($_COOKIE["lang"])){
                 <p class="pe-5 lead"><?= $textArray["about-p1"] ?></p>
             </div>
             <div class="accordion" id="aboutMeAccordion">
-                <!-- <div class="w-100 text-center">
-                    <svg class="bi text-info border border-1 border-info rounded-5" width="60" height="30" fill="currentColor" data-bs-toggle="collapse" data-bs-target="#itemOne" aria-expanded="false" aria-controls="collapseOne">
-                        <use xlink:href="./assets/images/icons/bootstrap-icons.svg#chevron-double-down" />
-                    </svg>
-                </div> -->
                 <div class="d-flex justify-content-center text-center mt-5">
-                    <div id="showMore" class="text-info border border-1 border-info rounded-5 collapsed"  data-bs-toggle="collapse" data-bs-target="#itemOne" aria-expanded="false" aria-controls="collapseOne">
+                    <div role="navigation" id="showMore" class="text-info border border-1 border-info rounded-5 collapsed" data-bs-toggle="collapse" data-bs-target="#itemOne" aria-expanded="false" aria-controls="itemOne">
                         <p class="m-0"><?= $textArray["about-button"] ?></p>
-                    <svg class="bi" width="150" height="30" fill="currentColor">
-                        <use xlink:href="./assets/images/icons/bootstrap-icons.svg#chevron-double-down" />
-                    </svg>
+                        <svg class="bi" width="150" height="30" fill="currentColor">
+                            <use xlink:href="./assets/images/icons/bootstrap-icons.svg#chevron-double-down" />
+                        </svg>
                     </div>
                 </div>
                 <div id="itemOne" class="collapse">
@@ -128,16 +124,19 @@ if(!isset($_COOKIE["lang"])){
         <!-- /About -->
         <!-- Skills -->
         <section id="skills" class="my-5">
-        <h2 class="display-4 text-center"><?= $textArray["skills-heading"] ?></h2>
-        <h3 class="h1 fw-light mb-0"><?= $textArray["skills-primary"] ?></h3>
-        <p class="text-secondary lh-1"><?= $textArray["skills-primary-text"] ?></p>
-        <p><span class="px-1 me-1 text-bg-info opacity-75">C#</span> <span class="px-1 me-1 text-bg-info opacity-75">.NET</span> <span class="px-1 me-1 text-bg-info opacity-75">ASP.NET Core</span> <span class="px-1 me-1 text-bg-info opacity-75">SQL</span> <span class="px-1 me-1 text-bg-info opacity-75">Visual Studio 2022</span> <span class="px-1 me-1 text-bg-info opacity-75">Git</span> <span class="px-1 me-1 text-bg-info opacity-75">GitHub</span></p>
-        <h3 class="h1 fw-light mb-0"><?= $textArray["skills-secondary"] ?></h3>
-        <p class="text-secondary lh-1"><?= $textArray["skills-secondary-text"] ?></p>
-        <p><span class="px-1 me-1 text-bg-info opacity-75">PHP</span> <span class="px-1 me-1 text-bg-info opacity-75">JavaScript</span> <span class="px-1 me-1 text-bg-info opacity-75">HTML</span> <span class="px-1 me-1 text-bg-info opacity-75">CSS</span> <span class="px-1 me-1 text-bg-info opacity-75">SASS</span> <span class="px-1 me-1 text-bg-info opacity-75">Bootstrap</span> <span class="px-1 me-1 text-bg-info opacity-75">C++</span> <span class="px-1 me-1 text-bg-info opacity-75">VS Code</span> <span class="px-1 me-1 text-bg-info opacity-75">MySQL</span> <span class="px-1 me-1 text-bg-info opacity-75">MS SQL Server</span> <span class="px-1 me-1 text-bg-info opacity-75">VMware Workstation</span></p>
-        <h3 class="h1 fw-light mb-0"><?= $textArray["skills-other"] ?></h3>
-        <p class="text-secondary lh-1"><?= $textArray["skills-other-text"] ?></p>
-        <p><span class="px-1 me-1 text-bg-info opacity-75">Visual Basic</span> <span class="px-1 me-1 text-bg-info opacity-75">Java</span> <span class="px-1 me-1 text-bg-info opacity-75">React</span> <span class="px-1 me-1 text-bg-info opacity-75">Linux</span> <span class="px-1 me-1 text-bg-info opacity-75">Docker</span> <span class="px-1 me-1 text-bg-info opacity-75">ITIL</span></p>
+            <h2 class="display-4 text-center"><?= $textArray["skills-heading"] ?></h2>
+            <!-- Primary Skills -->
+            <h3 class="h1 fw-light mb-0"><?= $textArray["skills-primary"] ?></h3>
+            <p class="text-secondary lh-1"><?= $textArray["skills-primary-text"] ?></p>
+            <p><span class="px-1 me-1 text-bg-info opacity-75">C#</span> <span class="px-1 me-1 text-bg-info opacity-75">.NET</span> <span class="px-1 me-1 text-bg-info opacity-75">ASP.NET Core</span> <span class="px-1 me-1 text-bg-info opacity-75">SQL</span> <span class="px-1 me-1 text-bg-info opacity-75">Visual Studio 2022</span> <span class="px-1 me-1 text-bg-info opacity-75">Git</span> <span class="px-1 me-1 text-bg-info opacity-75">GitHub</span></p>
+            <!-- Secondary Skills -->
+            <h3 class="h1 fw-light mb-0"><?= $textArray["skills-secondary"] ?></h3>
+            <p class="text-secondary lh-1"><?= $textArray["skills-secondary-text"] ?></p>
+            <p><span class="px-1 me-1 text-bg-info opacity-75">PHP</span> <span class="px-1 me-1 text-bg-info opacity-75">JavaScript</span> <span class="px-1 me-1 text-bg-info opacity-75">HTML</span> <span class="px-1 me-1 text-bg-info opacity-75">CSS</span> <span class="px-1 me-1 text-bg-info opacity-75">SASS</span> <span class="px-1 me-1 text-bg-info opacity-75">Bootstrap</span> <span class="px-1 me-1 text-bg-info opacity-75">C++</span> <span class="px-1 me-1 text-bg-info opacity-75">VS Code</span> <span class="px-1 me-1 text-bg-info opacity-75">MySQL</span> <span class="px-1 me-1 text-bg-info opacity-75">MS SQL Server</span> <span class="px-1 me-1 text-bg-info opacity-75">VMware Workstation</span></p>
+            <!-- Other Skills -->
+            <h3 class="h1 fw-light mb-0"><?= $textArray["skills-other"] ?></h3>
+            <p class="text-secondary lh-1"><?= $textArray["skills-other-text"] ?></p>
+            <p><span class="px-1 me-1 text-bg-info opacity-75">Visual Basic</span> <span class="px-1 me-1 text-bg-info opacity-75">Java</span> <span class="px-1 me-1 text-bg-info opacity-75">React</span> <span class="px-1 me-1 text-bg-info opacity-75">Linux</span> <span class="px-1 me-1 text-bg-info opacity-75">Docker</span> <span class="px-1 me-1 text-bg-info opacity-75">ITIL</span></p>
         </section>
         <!-- /Skills -->
         <!-- Projects -->
