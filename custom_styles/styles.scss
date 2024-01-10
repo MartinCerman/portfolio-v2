@@ -99,6 +99,14 @@ button[type="submit"] {
   height: 38px;
 }
 
+button * {
+  transition: all 250ms;
+}
+
+button:hover * {
+  color: $light !important;
+}
+
 @include media-breakpoint-up(sm) {
   .w-sm-75 {
     width: 75% !important;

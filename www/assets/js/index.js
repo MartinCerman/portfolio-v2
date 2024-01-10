@@ -144,7 +144,7 @@ function createProjectCard(
   return container;
 }
 
-// Contact form submit
+// Contact form submit button
 const btnSubmit = document.querySelector("button[type='submit']");
 const contactForm = document.getElementById("contactForm");
 
@@ -187,7 +187,8 @@ async function postFormData(name, email, message){
 }
 
 function setSubmitBtnContent(elementIndex){
-  const btnSubmitChildren = document.querySelector("button[type='submit']").children;
+  const btnSubmit = document.querySelector("button[type='submit']");
+  const btnSubmitChildren = btnSubmit.children;
   if(elementIndex >= btnSubmitChildren.length){
     return;
   }
